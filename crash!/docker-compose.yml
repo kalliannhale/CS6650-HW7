@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  api-service:
+    build: ./api-service
+    ports:
+      - "8080:8080"
+    environment:
+      - FLAKY_SERVICE_URL=http://flaky-service:8081
+    depends_on:
+      - flaky-service
+
+  flaky-service:
+    build: ./flaky-service
+    ports:
+      - "8081:8081"

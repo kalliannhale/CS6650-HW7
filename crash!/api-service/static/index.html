@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Demo Store Checkout - BROKEN VERSION</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            max-width: 800px; 
+            margin: 50px auto; 
+            padding: 20px;
+        }
+        h1 { color: #333; }
+        .product-box {
+            border: 2px solid #ddd;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            background: #f9f9f9;
+        }
+        button { 
+            padding: 12px 24px; 
+            font-size: 16px; 
+            cursor: pointer;
+            margin: 5px;
+            border-radius: 4px;
+            border: none;
+            color: white;
+        }
+        .btn-buy { background: #28a745; }
+        .btn-buy:hover { background: #218838; }
+        .btn-test { background: #007bff; }
+        .btn-test:hover { background: #0056b3; }
+        .btn-metrics { background: #6c757d; }
+        .btn-metrics:hover { background: #545b62; }
+        
+        #results { 
+            margin-top: 20px; 
+            max-height: 400px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            padding: 10px;
+            background: white;
+        }
+        .success { 
+            color: #28a745; 
+            padding: 8px;
+            margin: 4px 0;
+            border-left: 4px solid #28a745;
+            background: #d4edda;
+        }
+        .error { 
+            color: #dc3545; 
+            padding: 8px;
+            margin: 4px 0;
+            border-left: 4px solid #dc3545;
+            background: #f8d7da;
+        }
+        .processing {
+            color: #666;
+            padding: 8px;
+            margin: 4px 0;
+        }
+        #metrics { 
+            margin-top: 30px; 
+            padding: 15px; 
+            background: #e9ecef;
+            border-radius: 8px;
+            font-family: monospace;
+        }
+        .version-badge {
+            display: inline-block;
+            padding: 5px 10px;
+            background: #dc3545;
+            color: white;
+            border-radius: 4px;
+            font-size: 12px;
+            margin-left: 10px;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+        .warning-box {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            color: #856404;
+        }
+    </style>
+</head>
+<body>
+    <h1>🛒 Demo Store Checkout <span class="version-badge">⚠️ BROKEN VERSION</span></h1>
+    
+    <div class="warning-box">
+        <strong>⚠️ WARNING:</strong> This version has NO circuit breaker protection!<br>
+        Watch how failures cause 3-second timeouts that block the entire system.
+    </div>
+
+    <div class="product-box">
+        <h2>🎮 Cool Gadget</h2>
+        <p><strong>Price: $99.99</strong></p>
+        <p>Amazing product that everyone wants!</p>
+        <button class="btn-buy" onclick="checkout()">💳 Complete Purchase</button>
+    </div>
+
+    <div>
+        <button class="btn-test" onclick="loadTest()">🔥 Simulate 20 Concurrent Users</button>
+        <button class="btn-metrics" onclick="getMetrics()">📊 Show System Metrics</button>
+        <button class="btn-metrics" onclick="clearResults()">🗑️ Clear Results</button>
+    </div>
+    
+    <div id="results"></div>
+    <div id="metrics"></div>
+
+    <script>
+        let requestCount = 0;
+
+        async function checkout() {
+            const start = Date.now();
+            const resultsDiv = document.getElementById('results');
+            requestCount++;
+            const thisRequest = requestCount;
+            
+            resultsDiv.innerHTML += `<p class="processing">⏳ Request #${thisRequest}: Processing payment...</p>`;
+            
+            try {
+                const response = await fetch('/api/checkout', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({item: 'Cool Gadget', price: 99.99})
+                });
+                
+                const duration = Date.now() - start;
+                const data = await response.text();
+                
+                if (response.ok) {
+                    resultsDiv.innerHTML += `<p class="success">✅ Request #${thisRequest}: ${data} (${duration}ms)</p>`;
+                } else {
+                    // All failures are slow in broken version
+                    resultsDiv.innerHTML += `<p class="error">❌ Request #${thisRequest}: ${data} (${duration}ms) - BLOCKED FOR ${duration}ms!</p>`;
+                }
+            } catch (error) {
+                const duration = Date.now() - start;
+                resultsDiv.innerHTML += `<p class="error">❌ Request #${thisRequest}: Error - ${error.message} (${duration}ms)</p>`;
+            }
+            
+            resultsDiv.scrollTop = resultsDiv.scrollHeight;
+        }
+        
+        async function loadTest() {
+            clearResults();
+            document.getElementById('results').innerHTML = '<p><strong>🔥 Running load test with 20 concurrent users...</strong></p><p class="error">⚠️ Watch the system freeze as requests pile up waiting for timeouts!</p>';
+            const promises = [];
+            for (let i = 0; i < 20; i++) {
+                promises.push(checkout());
+                await new Promise(resolve => setTimeout(resolve, 50));
+            }
+            
+            setTimeout(() => {
+                getMetrics();
+            }, 1000);
+        }
+        
+        async function getMetrics() {
+            const response = await fetch('/metrics');
+            const data = await response.json();
+            const pretty = JSON.stringify(data, null, 2);
+            document.getElementById('metrics').innerHTML = '<h3>📊 System Metrics (BROKEN VERSION)</h3><pre>' + pretty + '</pre>';
+        }
+        
+        function clearResults() {
+            document.getElementById('results').innerHTML = '';
+            document.getElementById('metrics').innerHTML = '';
+            requestCount = 0;
+        }
+    </script>
+</body>
+</html>
