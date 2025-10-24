@@ -1,78 +1,127 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Demo Store Checkout</title>
+    <title>The "Literally Me" Halloween Costume!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body { 
-            font-family: Arial, sans-serif; 
-            max-width: 800px; 
-            margin: 50px auto; 
+        body {
+            font-family: 'Poppins', sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
             padding: 20px;
+            background: #1a1a1a;
+            color: #f0f0f0;
         }
-        h1 { color: #333; }
+
+        h1 {
+            font-family: 'Creepster', cursive;
+            color: #ff6600;
+            text-align: center;
+            font-size: 3em;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px #000;
+        }
+        
+        h2 {
+            color: #f39c12;
+        }
+
         .product-box {
-            border: 2px solid #ddd;
-            padding: 20px;
+            border: 2px solid #ff6600;
+            padding: 30px;
             margin: 20px 0;
-            border-radius: 8px;
-            background: #f9f9f9;
+            border-radius: 12px;
+            background: #2c2c2c;
+            text-align: center;
+            box-shadow: 0 0 15px rgba(255, 102, 0, 0.5);
         }
-        button { 
-            padding: 12px 24px; 
-            font-size: 16px; 
+
+        .product-box img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 2px solid #444;
+        }
+
+        button {
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
             cursor: pointer;
             margin: 5px;
-            border-radius: 4px;
+            border-radius: 8px;
             border: none;
             color: white;
+            transition: transform 0.2s ease;
         }
-        .btn-buy { background: #28a745; }
-        .btn-buy:hover { background: #218838; }
-        .btn-test { background: #007bff; }
-        .btn-test:hover { background: #0056b3; }
-        .btn-metrics { background: #6c757d; }
-        .btn-metrics:hover { background: #545b62; }
         
-        #results { 
-            margin-top: 20px; 
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        .btn-buy {
+            background: #ff6600;
+            text-shadow: 1px 1px 2px #000;
+        }
+        .btn-buy:hover {
+            background: #e65c00;
+        }
+        .btn-test {
+            background: #9b59b6;
+        }
+        .btn-test:hover {
+            background: #8e44ad;
+        }
+        .btn-metrics {
+            background: #8e44ad;
+        }
+        .btn-metrics:hover {
+            background: #713a8a;
+        }
+        #results {
+            margin-top: 20px;
             max-height: 400px;
             overflow-y: auto;
-            border: 1px solid #ddd;
+            border: 1px solid #444;
             padding: 10px;
-            background: white;
+            background: #2c2c2c;
+            border-radius: 8px;
         }
-        .success { 
-            color: #28a745; 
+        .success {
+            color: #2ecc71;
             padding: 8px;
             margin: 4px 0;
-            border-left: 4px solid #28a745;
-            background: #d4edda;
+            border-left: 4px solid #2ecc71;
+            background: #1e4620;
         }
-        .error { 
-            color: #dc3545; 
+        .error {
+            color: #e74c3c;
             padding: 8px;
             margin: 4px 0;
-            border-left: 4px solid #dc3545;
-            background: #f8d7da;
+            border-left: 4px solid #e74c3c;
+            background: #4a1a1f;
         }
-        .fast-fail { 
-            color: #fd7e14; 
+        .fast-fail {
+            color: #f1c40f;
             padding: 8px;
             margin: 4px 0;
-            border-left: 4px solid #fd7e14;
-            background: #fff3cd;
+            border-left: 4px solid #f1c40f;
+            background: #5a4a0f;
         }
         .processing {
-            color: #666;
+            color: #999;
             padding: 8px;
             margin: 4px 0;
         }
-        #metrics { 
-            margin-top: 30px; 
-            padding: 15px; 
-            background: #e9ecef;
+        #metrics {
+            margin-top: 30px;
+            padding: 15px;
+            background: #333;
             border-radius: 8px;
             font-family: monospace;
+            border: 1px solid #555;
         }
         .version-badge {
             display: inline-block;
@@ -82,110 +131,123 @@
             border-radius: 4px;
             font-size: 12px;
             margin-left: 10px;
+            font-family: 'Poppins', sans-serif; /* Keep this readable */
         }
     </style>
 </head>
 <body>
-    <h1>🛒 Demo Store Checkout <span class="version-badge" id="version" style="background: #28a745;">FIXED VERSION</span></h1>
+
+<h1>🎃 The "Literally Me" Costume! 👻</h1>
+
+<div class="product-box">
+    <!-- IMPORTANT: Replace the src below with the URL to your image! -->
+    <img src="https://i.imgur.com/X4ZMxQL.png" alt="A look-book for the Halloween costume">
     
-    <div class="product-box">
-        <h2>🎮 Cool Gadget</h2>
-        <p><strong>Price: $99.99</strong></p>
-        <p>Amazing product that everyone wants!</p>
-        <button class="btn-buy" onclick="checkout()">💳 Complete Purchase</button>
-    </div>
+    <h2>The "Literally Me" Halloween Costume Starter Pack</h2>
+    <p><strong>Price: $39.99</strong></p>
+    <p>Get my signature look for Halloween! This complete set includes the black ribbed zip-up track suit, a stylish sports bra, comfy socks, classic sneakers, and the essential satin scarf.</p>
+    <button class="btn-buy" onclick="checkout()">👻 Buy Now if You Dare!</button>
+</div>
 
-    <div>
-        <button class="btn-test" onclick="loadTest()">🔥 Simulate 20 Concurrent Users</button>
-        <button class="btn-metrics" onclick="getMetrics()">📊 Show System Metrics</button>
-        <button class="btn-metrics" onclick="clearResults()">🗑️ Clear Results</button>
-    </div>
-    
-    <div id="results"></div>
-    <div id="metrics"></div>
+<div>
+    <button class="btn-test" onclick="loadTest()">💀 Simulate 20 Concurrent Users </button>
+    <button class="btn-metrics" onclick="getMetrics()">🔮 See System Metrics </button>
+    <button class="btn-metrics" onclick="clearResults()">🧹 Start Over! </button>
+</div>
 
-    <script>
-        let requestCount = 0;
+<div id="results"></div>
+<div id="metrics"></div>
 
-        async function checkout() {
-            const start = Date.now();
-            const resultsDiv = document.getElementById('results');
-            requestCount++;
-            const thisRequest = requestCount;
+<script>
+    let requestCount = 0;
+
+    async function checkout() {
+        const start = Date.now();
+        const resultsDiv = document.getElementById('results');
+        requestCount++;
+        const thisRequest = requestCount;
+        
+        resultsDiv.innerHTML += `<p class="processing">⏳ Request #${thisRequest}: Summoning payment spirits...</p>`;
+        
+        try {
+            const response = await fetch('/api/checkout', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                // Updated product name and price
+                body: JSON.stringify({item: 'The Literally Me Costume', price: 39.99})
+            });
             
-            resultsDiv.innerHTML += `<p class="processing">⏳ Request #${thisRequest}: Processing payment...</p>`;
+            const duration = Date.now() - start;
+            const data = await response.text();
             
-            try {
-                const response = await fetch('/api/checkout', {
-                    method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({item: 'Cool Gadget', price: 99.99})
-                });
-                
-                const duration = Date.now() - start;
-                const data = await response.text();
-                
-                if (response.ok) {
-                    resultsDiv.innerHTML += `<p class="success">✅ Request #${thisRequest}: ${data} (${duration}ms)</p>`;
-                } else {
-                    const cssClass = duration < 100 ? 'fast-fail' : 'error';
-                    resultsDiv.innerHTML += `<p class="${cssClass}">❌ Request #${thisRequest}: ${data} (${duration}ms)</p>`;
-                }
-            } catch (error) {
-                const duration = Date.now() - start;
-                resultsDiv.innerHTML += `<p class="error">❌ Request #${thisRequest}: Error - ${error.message} (${duration}ms)</p>`;
+            if (response.ok) {
+                resultsDiv.innerHTML += `<p class="success">✅ Request #${thisRequest}: ${data} (${duration}ms)</p>`;
+            } else {
+                const cssClass = duration < 100 ? 'fast-fail' : 'error';
+                resultsDiv.innerHTML += `<p class="${cssClass}">❌ Request #${thisRequest}: ${data} (${duration}ms)</p>`;
             }
-            
-            resultsDiv.scrollTop = resultsDiv.scrollHeight;
+        } catch (error) {
+            const duration = Date.now() - start;
+            resultsDiv.innerHTML += `<p class="error">❌ Request #${thisRequest}: Error - ${error.message} (${duration}ms)</p>`;
         }
         
-        async function loadTest() {
-            clearResults();
-            document.getElementById('results').innerHTML = '<p><strong>🔥 Running load test with 20 concurrent users...</strong></p>';
-            const promises = [];
-            for (let i = 0; i < 20; i++) {
-                promises.push(checkout());
-                await new Promise(resolve => setTimeout(resolve, 50)); // Stagger slightly
-            }
-            
-            setTimeout(() => {
-                getMetrics();
-            }, 1000);
+        resultsDiv.scrollTop = resultsDiv.scrollHeight;
+    }
+    
+    async function loadTest() {
+        clearResults();
+        document.getElementById('results').innerHTML = '<p><strong>💀 Unleashing 20 ghoulish guests on the server...</strong></p>';
+        const promises = [];
+        for (let i = 0; i < 20; i++) {
+            promises.push(checkout());
+            await new Promise(resolve => setTimeout(resolve, 50)); // Stagger slightly
         }
         
-        async function getMetrics() {
+        setTimeout(() => {
+            getMetrics();
+        }, 1000);
+    }
+    
+    async function getMetrics() {
+        try {
             const response = await fetch('/metrics');
-            const data = await response.json();  // Parse as JSON
-            const pretty = JSON.stringify(data, null, 2);  // Format with 2-space indent
-            document.getElementById('metrics').innerHTML = '<h3>📊 System Metrics</h3><pre>' + pretty + '</pre>';
+            const data = await response.json();
+            const pretty = JSON.stringify(data, null, 2);
+            document.getElementById('metrics').innerHTML = '<h3>🔮 The Server\'s Soul</h3><pre>' + pretty + '</pre>';
+        } catch (e) {
+            document.getElementById('metrics').innerHTML = '<h3>🔮 The Server\'s Soul</h3><pre>Could not divine the server\'s soul...</pre>';
         }
-        
-        function clearResults() {
-            document.getElementById('results').innerHTML = '';
-            document.getElementById('metrics').innerHTML = '';
-            requestCount = 0;
-        }
+    }
+    
+    function clearResults() {
+        document.getElementById('results').innerHTML = '';
+        document.getElementById('metrics').innerHTML = '';
+        requestCount = 0;
+    }
 
-        // Poll circuit breaker state every 2 seconds
-        setInterval(async () => {
-            try {
-                const response = await fetch('/circuit-state');
-                const state = await response.text();
-                const badge = document.getElementById('version');
-                
-                if (state === 'open') {
-                    badge.textContent = 'FIXED VERSION - CIRCUIT OPEN 🔴';
-                    badge.style.background = '#dc3545';
-                } else if (state === 'half-open') {
-                    badge.textContent = 'FIXED VERSION - CIRCUIT TESTING 🟡';
-                    badge.style.background = '#ffc107';
-                } else {
-                    badge.textContent = 'FIXED VERSION - CIRCUIT CLOSED 🟢';
-                    badge.style.background = '#28a745';
-                }
-            } catch (e) { // Ignore errors
-                }
-            }, 2000);
-    </script>
+    // This part that checks the circuit breaker state is from your original code.
+    // I've left it as-is so it continues to function!
+    setInterval(async () => {
+        try {
+            const response = await fetch('/circuit-state');
+            const state = await response.text();
+            const badge = document.getElementById('version');
+            
+            if (state === 'open') {
+                badge.textContent = 'CIRCUIT OPEN 🔴';
+                badge.style.background = '#e74c3c';
+            } else if (state === 'half-open') {
+                badge.textContent = 'CIRCUIT TESTING 🟡';
+                badge.style.background = '#f1c40f';
+                badge.style.color = '#333';
+            } else {
+                badge.textContent = 'CIRCUIT CLOSED 🟢';
+                badge.style.background = '#2ecc71';
+                badge.style.color = 'white';
+            }
+        } catch (e) { // Ignore errors
+            }
+        }, 2000);
+</script>
 </body>
 </html>

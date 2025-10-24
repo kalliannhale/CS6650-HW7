@@ -1,115 +1,142 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Demo Store Checkout - BROKEN VERSION</title>
+    <title>The "Literally Me" Costume - UNPROTECTED VERSION</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body { 
-            font-family: Arial, sans-serif; 
-            max-width: 800px; 
-            margin: 50px auto; 
+        body {
+            font-family: 'Poppins', sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
             padding: 20px;
+            background: #1a1a1a;
+            color: #f0f0f0;
         }
-        h1 { color: #333; }
+
+        h1 {
+            font-family: 'Creepster', cursive;
+            color: #ff6600;
+            text-align: center;
+            font-size: 3em;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px #000;
+        }
+        
+        h2 { color: #f39c12; }
+
         .product-box {
-            border: 2px solid #ddd;
-            padding: 20px;
+            border: 2px solid #ff6600;
+            padding: 30px;
             margin: 20px 0;
-            border-radius: 8px;
-            background: #f9f9f9;
+            border-radius: 12px;
+            background: #2c2c2c;
+            text-align: center;
+            box-shadow: 0 0 15px rgba(255, 102, 0, 0.5);
         }
-        button { 
-            padding: 12px 24px; 
-            font-size: 16px; 
+
+        .product-box img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 2px solid #444;
+        }
+
+        button {
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
             cursor: pointer;
             margin: 5px;
-            border-radius: 4px;
+            border-radius: 8px;
             border: none;
             color: white;
+            transition: transform 0.2s ease;
         }
-        .btn-buy { background: #28a745; }
-        .btn-buy:hover { background: #218838; }
-        .btn-test { background: #007bff; }
-        .btn-test:hover { background: #0056b3; }
-        .btn-metrics { background: #6c757d; }
-        .btn-metrics:hover { background: #545b62; }
+        
+        button:hover { transform: scale(1.05); }
+
+        .btn-buy { background: #ff6600; text-shadow: 1px 1px 2px #000; }
+        .btn-buy:hover { background: #e65c00; }
+        .btn-test { background: #9b59b6; }
+        .btn-test:hover { background: #8e44ad; }
+        .btn-metrics { background: #8e44ad; }
+        .btn-metrics:hover { background: #713a8a; }
         
         #results { 
             margin-top: 20px; 
             max-height: 400px;
             overflow-y: auto;
-            border: 1px solid #ddd;
+            border: 1px solid #444;
             padding: 10px;
-            background: white;
+            background: #2c2c2c;
+            border-radius: 8px;
         }
-        .success { 
-            color: #28a745; 
-            padding: 8px;
-            margin: 4px 0;
-            border-left: 4px solid #28a745;
-            background: #d4edda;
-        }
-        .error { 
-            color: #dc3545; 
-            padding: 8px;
-            margin: 4px 0;
-            border-left: 4px solid #dc3545;
-            background: #f8d7da;
-        }
-        .processing {
-            color: #666;
-            padding: 8px;
-            margin: 4px 0;
-        }
+
+        .success { color: #2ecc71; padding: 8px; margin: 4px 0; border-left: 4px solid #2ecc71; background: #1e4620; }
+        .error { color: #e74c3c; padding: 8px; margin: 4px 0; border-left: 4px solid #e74c3c; background: #4a1a1f; }
+        .processing { color: #999; padding: 8px; margin: 4px 0; }
+        
         #metrics { 
             margin-top: 30px; 
             padding: 15px; 
-            background: #e9ecef;
+            background: #333;
             border-radius: 8px;
             font-family: monospace;
+            border: 1px solid #555;
         }
+
         .version-badge {
             display: inline-block;
             padding: 5px 10px;
-            background: #dc3545;
+            background: #e74c3c;
             color: white;
             border-radius: 4px;
-            font-size: 12px;
+            font-size: 14px;
             margin-left: 10px;
+            font-family: 'Poppins', sans-serif;
             animation: pulse 2s infinite;
+            text-shadow: 1px 1px 2px black;
         }
+
         @keyframes pulse {
             0%, 100% { opacity: 1; }
-            50% { opacity: 0.6; }
+            50% { opacity: 0.7; }
         }
+
         .warning-box {
-            background: #fff3cd;
-            border: 2px solid #ffc107;
+            background: #5a4a0f;
+            border: 2px solid #f1c40f;
             padding: 15px;
             border-radius: 8px;
             margin: 20px 0;
-            color: #856404;
+            color: #f0f0f0;
         }
     </style>
 </head>
 <body>
-    <h1>🛒 Demo Store Checkout <span class="version-badge">⚠️ BROKEN VERSION</span></h1>
+    <h1>🎃 The "Literally Me" Costume! <span class="version-badge">⚠️ UNPROTECTED</span></h1>
     
     <div class="warning-box">
-        <strong>⚠️ WARNING:</strong> This version has NO circuit breaker protection!<br>
-        Watch how failures cause 3-second timeouts that block the entire system.
+        <strong>⚠️ WARNING:</strong> This version has <strong>NO</strong> circuit breaker protection!<br>
+        Watch how failures cause long timeouts that block the entire system from responding.
     </div>
 
     <div class="product-box">
-        <h2>🎮 Cool Gadget</h2>
-        <p><strong>Price: $99.99</strong></p>
-        <p>Amazing product that everyone wants!</p>
-        <button class="btn-buy" onclick="checkout()">💳 Complete Purchase</button>
+        <!-- IMPORTANT: Replace the src below with the URL to your image! -->
+        <img src="https://i.imgur.com/X4ZMxQL.png" alt="A look-book for the Halloween costume">
+        
+        <h2>The "Literally Me" Halloween Costume Starter Pack</h2>
+        <p><strong>Price: $39.99</strong></p>
+        <p>Get my signature look for Halloween! This complete set includes the black ribbed zip-up track suit, a stylish sports bra, comfy socks, classic sneakers, and the essential satin scarf.</p>
+        <button class="btn-buy" onclick="checkout()">👻 Buy Now... If You Dare!</button>
     </div>
 
     <div>
-        <button class="btn-test" onclick="loadTest()">🔥 Simulate 20 Concurrent Users</button>
-        <button class="btn-metrics" onclick="getMetrics()">📊 Show System Metrics</button>
-        <button class="btn-metrics" onclick="clearResults()">🗑️ Clear Results</button>
+        <button class="btn-test" onclick="loadTest()">💀 Simulate 20 Concurrent Users </button>
+        <button class="btn-metrics" onclick="getMetrics()">🔮 See System Metrics</button>
+        <button class="btn-metrics" onclick="clearResults()">🧹 Start Over! </button>
     </div>
     
     <div id="results"></div>
@@ -124,23 +151,24 @@
             requestCount++;
             const thisRequest = requestCount;
             
-            resultsDiv.innerHTML += `<p class="processing">⏳ Request #${thisRequest}: Processing payment...</p>`;
+            resultsDiv.innerHTML += `<p class="processing">⏳ Request #${thisRequest}: Sending a prayer to the payment server...</p>`;
             
             try {
                 const response = await fetch('/api/checkout', {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({item: 'Cool Gadget', price: 99.99})
+                    body: JSON.stringify({item: 'The Literally Me Costume', price: 39.99})
                 });
                 
                 const duration = Date.now() - start;
-                const data = await response.text();
+                const dataText = await response.text(); // Use .text() to handle both JSON and plain text errors
                 
                 if (response.ok) {
-                    resultsDiv.innerHTML += `<p class="success">✅ Request #${thisRequest}: ${data} (${duration}ms)</p>`;
+                    const data = JSON.parse(dataText);
+                    resultsDiv.innerHTML += `<p class="success">✅ Request #${thisRequest}: Payment Confirmed! (${duration}ms)</p>`;
                 } else {
-                    // All failures are slow in broken version
-                    resultsDiv.innerHTML += `<p class="error">❌ Request #${thisRequest}: ${data} (${duration}ms) - BLOCKED FOR ${duration}ms!</p>`;
+                    // This is the key message for the broken version!
+                    resultsDiv.innerHTML += `<p class="error">❌ Request #${thisRequest}: ${dataText} - BLOCKED FOR ${duration}ms!</p>`;
                 }
             } catch (error) {
                 const duration = Date.now() - start;
@@ -152,7 +180,7 @@
         
         async function loadTest() {
             clearResults();
-            document.getElementById('results').innerHTML = '<p><strong>🔥 Running load test with 20 concurrent users...</strong></p><p class="error">⚠️ Watch the system freeze as requests pile up waiting for timeouts!</p>';
+            document.getElementById('results').innerHTML = '<p><strong>💀 Unleashing 20 ghoulish guests...</strong></p><p class="error">⚠️ Watch the system freeze as requests pile up waiting for timeouts!</p>';
             const promises = [];
             for (let i = 0; i < 20; i++) {
                 promises.push(checkout());
@@ -165,10 +193,14 @@
         }
         
         async function getMetrics() {
-            const response = await fetch('/metrics');
-            const data = await response.json();
-            const pretty = JSON.stringify(data, null, 2);
-            document.getElementById('metrics').innerHTML = '<h3>📊 System Metrics (BROKEN VERSION)</h3><pre>' + pretty + '</pre>';
+            try {
+                const response = await fetch('/metrics');
+                const data = await response.json();
+                const pretty = JSON.stringify(data, null, 2);
+                document.getElementById('metrics').innerHTML = '<h3>🔮 The Server\'s Soul (UNPROTECTED VERSION)</h3><pre>' + pretty + '</pre>';
+            } catch (e) {
+                document.getElementById('metrics').innerHTML = '<h3>🔮 The Server\'s Soul</h3><pre>Could not divine the server\'s soul...</pre>';
+            }
         }
         
         function clearResults() {

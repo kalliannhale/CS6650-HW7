@@ -1,2 +1,2 @@
 # CS6650-HW7
-Building Scalable Distributed Systems
+Building Scalable Distributed Systems | Midterm Mastery
